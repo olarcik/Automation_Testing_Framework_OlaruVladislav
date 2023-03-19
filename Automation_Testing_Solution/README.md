@@ -1,0 +1,1 @@
+Proiectul contine un framework care poate fi folosit la automatizarea testelor cu ajutorul instrumentului Selenium
