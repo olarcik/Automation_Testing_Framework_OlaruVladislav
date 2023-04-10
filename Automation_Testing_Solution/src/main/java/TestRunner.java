@@ -1,16 +1,29 @@
 import managers.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.WebElement;
+import pageObjects.HomePage;
+import pageObjects.RegisterPage;
+
+import static java.lang.Thread.*;
 
 public class TestRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
-        WebDriverManager chromeDriver = new WebDriverManager("CHROME");
-        WebDriverManager firefoxDriver = new WebDriverManager("FIREFOX");
+        WebDriverManager webDriverManager = new WebDriverManager("CHROME");
 
-        chromeDriver.getDriver().get("https://enter.online/");
-        firefoxDriver.getDriver().get("https://darwin.md/");
+        webDriverManager.getDriver().get("https://demo.opencart.com/");
+        webDriverManager.getDriver().manage().window().maximize();
 
-        chromeDriver.closeDriver();
-        firefoxDriver.closeDriver();
+        HomePage homePage = new HomePage(webDriverManager.getDriver());
+        homePage.navigateToRegisterPage();
+
+        RegisterPage registerPage = new RegisterPage(webDriverManager.getDriver());
+        registerPage.fillInTheRegisterPage("Olaru","Vladislav","vladis.url@gmail.com","Vladis123!");
+
+        Thread.sleep(10000);
+
+        webDriverManager.getDriver().close();
 
     }
 }
