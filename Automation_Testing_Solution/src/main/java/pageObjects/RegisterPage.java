@@ -32,6 +32,11 @@ public class RegisterPage extends Page {
 
     }
 
+    public boolean allTheElementsAreDisplayed(){
+        return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed()
+                && privaceCheckBox.isDisplayed() && continueButton.isDisplayed();
+    }
+
 
 
 
