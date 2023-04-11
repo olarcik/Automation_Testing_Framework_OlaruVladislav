@@ -2,7 +2,7 @@
 Feature: Register feature test suit
 
   Background:
-    Given "https://demo.opencart.com/" is accesed
+    Given "HomePage" is opened
 
   Scenario: Register page URL is accesible from Home page
     When My account button is clicked

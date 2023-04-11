@@ -5,6 +5,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.junit.jupiter.api.Assertions;
+import pageObjects.Page;
 
 public class GeneralSteps {
 
@@ -22,5 +23,11 @@ public class GeneralSteps {
     public void isPresentWithinTheCurrentUrl(String urlKeyWord){
         Assertions.assertTrue(testContext.getWebDriverManager().getDriver().getCurrentUrl().contains(urlKeyWord));
 
+    }
+
+    @Given("^\"([^\"]*)\" is opened$")
+    public void isOpened(String pageName) {
+        Page.navigateToPage(pageName,testContext.getWebDriverManager().getDriver());
+        System.out.println("Pagina" + pageName + "a fost accesata");
     }
 }
