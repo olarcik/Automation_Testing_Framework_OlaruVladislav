@@ -6,6 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 public class RegisterPage extends Page {
 
+    private final String ENDPOINT = "/index.php?route=account/register&language=en-gb";
+
     public RegisterPage(WebDriver driver){
         super(driver);
     }
@@ -35,6 +37,11 @@ public class RegisterPage extends Page {
     public boolean allTheElementsAreDisplayed(){
         return firstNameInput.isDisplayed() && lastNameInput.isDisplayed() && emailInput.isDisplayed() && passwordInput.isDisplayed()
                 && privaceCheckBox.isDisplayed() && continueButton.isDisplayed();
+    }
+
+    public RegisterPage toPage(){
+        driver.get(BASE_URL + ENDPOINT);
+        return this;
     }
 
 
