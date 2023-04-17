@@ -9,6 +9,7 @@ import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.io.File;
+import java.time.Duration;
 
 public class WebDriverManager {
 
@@ -35,7 +36,11 @@ public class WebDriverManager {
             default:
                 System.out.println("Optiunea de web driver indicata nu este valabila! Mai incearca");
         }
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(30));
         return  driver;
+
     }
 
     public  WebDriver getDriver(){
